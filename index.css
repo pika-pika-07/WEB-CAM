@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.video-container {
+  height: 200vh;
+  width: 200vw;
+}
+.video {
+  width: 100%;
+  height: 100%;
+}
