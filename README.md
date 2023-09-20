@@ -19,4 +19,18 @@
 // Video recording -> To stream -> Html element 'video'
 // Camera -> Stream - >
 
-Stream(data) comes in chunks
+//Stream(data) comes in chunks
+
+// Index db(Browser)
+
+1.  Client side storage
+2.  Larger volume of data
+3.  Event Driven
+4.  Asynchronus
+5.  Works like key value pairs( complex objects, videos, blobs, files)
+
+// How it works
+
+1. Create Database
+2. Create object store
+3. Make transactions -> Add, retrieve, removal
