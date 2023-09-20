@@ -25,11 +25,16 @@ body {
   background-color: #cde6e0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .media {
   height: calc(100% - 2rem - 2rem);
   background-color: orange;
+}
+.media > * {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
 }
 .media-conatiner {
   height: 15rem;
