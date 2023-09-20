@@ -145,3 +145,18 @@ video {
 
   z-index: 1;
 }
+
+.material-icons {
+  color: white;
+  font-size: 3rem;
+}
+
+.gallery {
+  position: absolute;
+  right: 6rem;
+  bottom: 10rem;
+  z-index: 2;
+}
+.gallery:hover {
+  cursor: pointer;
+}

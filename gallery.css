@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.back {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: black;
+  position: fixed;
+  bottom: 4rem;
+  right: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 0.8rem;
+}
+.back:hover {
+  cursor: pointer;
+}
+.gallery-container {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #cde6e0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.media {
+  height: calc(100% - 2rem - 2rem);
+  background-color: orange;
+}
+.media-conatiner {
+  height: 15rem;
+  width: 15rem;
+  border: 10px solid white;
+  background-color: lightgreen;
+  margin: 2rem;
+}
+.action-btn {
+  height: 2rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.download {
+  background-color: black;
+}
+.delete {
+  background-color: red;
+}
