@@ -74,12 +74,12 @@ setTimeout(() => {
 function deleteListener(e) {
   // DB removal
   let id = e.target.parentElement.getAttribute("id");
-
-  if (id.slice(0, 3) == "vid") {
+  let type = id.slice(0, 3);
+  if (type == "vid") {
     let videodbTransaction = db.transaction("video", "readwrite");
     let videoStore = videodbTransaction.objectStore("video");
     videoStore.delete(id);
-  } else if (id.slice(0, 3) === "img") {
+  } else if (type === "img") {
     let imagedbTransaction = db.transaction("image", "readwrite");
     let imageStore = imagedbTransaction.objectStore("image");
     imageStore.delete(id);
@@ -90,4 +90,36 @@ function deleteListener(e) {
   e.target.parentElement.remove();
 }
 
-function downloadListener(e) {}
+function downloadListener(e) {
+  let id = e.target.parentElement.getAttribute("id");
+  let type = id.slice(0, 3);
+  if (type == "vid") {
+    let videodbTransaction = db.transaction("video", "readwrite");
+    let videoStore = videodbTransaction.objectStore("video");
+
+    let videoRequest = videoStore.get(id);
+    videoRequest.onsuccess = (e) => {
+      let videoResult = videoRequest.result;
+      let videoUrl = URL.createObjectURL(videoResult.blobData);
+
+      let a = document.createElement("a");
+      a.href = videoUrl;
+      a.download = "stream.mp4";
+      a.click();
+    };
+  } else if (type === "img") {
+    let imagedbTransaction = db.transaction("image", "readwrite");
+    let imageStore = imagedbTransaction.objectStore("image");
+
+    let imageRequest = imageStore.get(id);
+    imageRequest.onsuccess = (e) => {
+      let imageResult = imageRequest.result;
+      let imageUrl = imageResult.url;
+
+      let a = document.createElement("a");
+      a.href = imageUrl;
+      a.download = "image.jpg";
+      a.click();
+    };
+  }
+}
