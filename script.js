@@ -60,6 +60,22 @@ recordButtonContainer.addEventListener("click", (e) => {
   }
 });
 
+captureButtonContainer.addEventListener("click", (e) => {
+  let canvas = document.createElement("canvas");
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+
+  let tool = canvas.getContext("2d");
+
+  tool.drawImage(video, 0, 0, canvas.width, canvas.height);
+  let imageUrl = canvas.toDataURL();
+
+  let a = document.createElement("a");
+  a.href = imageUrl;
+  a.download = "image.jpg";
+  a.click();
+});
+
 let timerId;
 let counter = 0; // Represents total seconds
 let timer = document.querySelector(".timer");
