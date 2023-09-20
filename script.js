@@ -10,6 +10,7 @@ let constraints = {
   video: true,
   audio: true,
 };
+let transparentColor = "transparent";
 
 // navigator gives glober browser info
 navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
@@ -68,6 +69,8 @@ captureButtonContainer.addEventListener("click", (e) => {
   let tool = canvas.getContext("2d");
 
   tool.drawImage(video, 0, 0, canvas.width, canvas.height);
+  tool.fillStyle = transparentColor;
+  tool.fillRect(0, 0, canvas.width, canvas.height);
   let imageUrl = canvas.toDataURL();
 
   let a = document.createElement("a");
@@ -107,3 +110,13 @@ function stopTimer() {
   clearInterval(timerId);
   timer.innerText = "00:00:00";
 }
+
+let allFilters = document.querySelectorAll(".filter");
+let filterLayer = document.querySelector(".filter-layer");
+allFilters.forEach((filterElement) => {
+  filterElement.addEventListener("click", (e) => {
+    transparentColor =
+      getComputedStyle(filterElement).getPropertyValue("background-color");
+    filterLayer.style.backgroundColor = transparentColor;
+  });
+});
